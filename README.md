@@ -1,2 +1,2 @@
 # ABDA
-Advanced Bayesian Data Analysis 
+~~Advanced~~ Applied Bayesian Data Analysis 
