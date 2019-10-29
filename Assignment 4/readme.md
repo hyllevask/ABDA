@@ -1,9 +1,9 @@
-Run the first part by the following command line:
+For the first part, run:
 
 ```shell
 python A4_1.py
 ````
-Figure 6.4 will be saved in the directory
+Figure 6.4 will be saved in the directory.
 
 For the second part, run:
 ```shell
