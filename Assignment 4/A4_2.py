@@ -1,14 +1,15 @@
-
 from __future__ import division
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pystan
 from ABDA_funtions import calculate_hdi, calculate_ci
+
+
 y = np.array([1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1])  # coin flips
-N = 20000
+N = 20000       #Number of samples
 ass4_dat = {'J': len(y),
-            'y': y}
+            'y': y} #Format for stan
 
 
 model = """
@@ -27,9 +28,10 @@ model {
     y ~ bernoulli(theta); // likelihood, note that stan will create the posterior automatically. 
 }
 """
+#Compile model
 sm = pystan.StanModel(model_code=model)
 
-# Train the model and generate samples
+# Train the model and generate samples for coin 1
 fit = sm.sampling(data=ass4_dat,iter=N, chains=1)
 la = fit.extract(permuted=True)  # return a dictionary of arrays
 result_coin1 = la['theta']
@@ -80,16 +82,15 @@ print('P(theta1 > theta2) = %.2f' %prob )
 
 
 
-
-
-
-
+# Create the difference data
 dtheta = result_coin1-result_coin2
 hdi_l2,hdi_u2 = calculate_hdi(dtheta,0.95)#Calculate HDI
+print('dtheta 0.95 HDI: [%.3f,%.3f]' %(hdi_l2,hdi_u2) )
 
 
 
 
+#Plot Coin 1 and Coin 2 in same plot + Plot dtheta
 plt.figure(2)
 plt.clf()
 plt.subplot(2,1,1)

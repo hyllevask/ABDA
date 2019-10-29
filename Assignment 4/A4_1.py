@@ -5,10 +5,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pystan
 
-y = np.array([1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1])  # coin flips
 
 # Recreate fig 6.4
-# Pasted from last assignment
+# Functions pasted from last assignment
 def beta(a,b,theta):
     #Theta needs to be equally spaced
     d_theta = theta[1] - theta[0]
@@ -28,6 +27,8 @@ def log_bernulli(y,theta):
     #return np.log((theta**y)*(1.0-theta)**(1.0-y))
     return y*np.log(theta) + (1-y)*np.log(1-theta)
 
+
+#Create the data and store it for pystan
 y = np.zeros(20, dtype=int)
 y[0:16] = 1
 
@@ -85,6 +86,7 @@ model {
     y ~ bernoulli(theta); // likelihood, note that stan will create the posterior automatically. 
 }
 """
+#Stack the models
 model_list = [model_1,model_2,model_3]
 result = []
 
