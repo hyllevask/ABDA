@@ -4,15 +4,15 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import pystan
-
+from scipy.special import beta as beta_sp
 
 # Recreate fig 6.4
 # Functions pasted from last assignment
 def beta(a,b,theta):
     #Theta needs to be equally spaced
-    d_theta = theta[1] - theta[0]
-    B = np.sum(theta**(a-1)*(1-theta)**(b-1)*d_theta)
-    return theta**(a-1) * (1 - theta)**(b-1)/B
+    #d_theta = theta[1] - theta[0]
+    #B = np.sum(theta**(a-1)*(1-theta)**(b-1)*d_theta)
+    return np.log(theta)*(a-1) + np.log(1 - theta)*(b-1)-np.log(beta_sp(a,b))
 
 def log_likelihood(y,theta):
     # Theta needs to be a np.ndarry even if its single value

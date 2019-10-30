@@ -10,3 +10,5 @@ For the second part, run:
 python A4_2.py
 ````
 Two figures is saved to the directory and the probabilities are printed.
+
+* The file joint_posterior.py is something I just tested. No need to look at it unless you are intressted.

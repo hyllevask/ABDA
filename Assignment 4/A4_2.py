@@ -7,7 +7,7 @@ from ABDA_funtions import calculate_hdi, calculate_ci
 
 
 y = np.array([1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1])  # coin flips
-N = 20000       #Number of samples
+N = 50000       #Number of samples
 ass4_dat = {'J': len(y),
             'y': y} #Format for stan
 
@@ -28,6 +28,9 @@ model {
     y ~ bernoulli(theta); // likelihood, note that stan will create the posterior automatically. 
 }
 """
+
+
+
 #Compile model
 sm = pystan.StanModel(model_code=model)
 
@@ -61,7 +64,7 @@ plt.savefig('Coin1',dpi=300)
 
 #Calculate and print probability for P(theta > 0.5)
 prob05 = np.sum(0.5 < result_coin1)/np.size(result_coin1)
-print('Coin 1: P(theta > 0.5) = %.2f' %prob05)
+print('Coin 1: P(theta > 0.5) = %.3f' %prob05)
 
 
 #Coin 2
@@ -78,7 +81,7 @@ result_coin2 = la['theta']
 
 #Calculate P(theta1 > theta2)
 prob = np.sum(result_coin2 < result_coin1)/np.size(result_coin1)
-print('P(theta1 > theta2) = %.2f' %prob )
+print('P(theta1 > theta2) = %.3f' %prob )
 
 
 
