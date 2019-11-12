@@ -30,7 +30,7 @@ def log_bernulli(y,theta):
 
 #Create the data and store it for pystan
 y = np.zeros(20, dtype=int)
-y[0:16] = 1
+y[0:-1] = 1
 
 ass4_dat = {'J': len(y),
             'y': y}

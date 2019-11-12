@@ -6,7 +6,7 @@ import pystan
 from ABDA_funtions import calculate_hdi, calculate_ci
 
 
-y = np.array([1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1])  # coin flips
+y = np.array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])  # coin flips
 N = 50000       #Number of samples
 ass4_dat = {'J': len(y),
             'y': y} #Format for stan
