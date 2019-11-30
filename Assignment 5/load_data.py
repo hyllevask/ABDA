@@ -7,7 +7,7 @@ import scipy
 
 
 #Load the data from file
-[theta_raw,mu_raw,sigma_raw,tau_raw,ldm,ldstd] = pickle.load( open( "MCMC_run2", "rb" ) )
+[theta_raw,mu_raw,sigma_raw,tau_raw,ldm,ldstd] = pickle.load( open( "MCMC_run3", "rb" ) )
 sample_mean = pickle.load( open( "sample_mean_data", "rb" ) )
 
 

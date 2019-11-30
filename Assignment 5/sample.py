@@ -14,7 +14,7 @@ import pickle
 def log_prior_sigma(sigma):
     return np.log(sigma > 0)        #Nice compact way of writing it, thx Jesper
 def log_prior_mu(mu):
-    return 1
+    return 0
 def log_prior_tau(tau):
     return np.log(tau > 0)
 def log_prior_theta(theta,mu,tau):
@@ -111,7 +111,7 @@ sigma_raw = samples[burn_in:-1,J + 1]
 tau_raw = samples[burn_in:-1,J + 2]
 
 #Save the data to file to use in the load_and_plot_data.py file
-filename = 'MCMC_run2'
+filename = 'MCMC_run3'
 outfile = open(filename,'wb')
 pickle.dump([theta_raw,mu_raw,sigma_raw,tau_raw,ldm,ldstd],outfile)
 outfile.close()
