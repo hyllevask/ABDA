@@ -113,3 +113,19 @@ plt.plot(sample_mean,'ro',fillstyle = 'full')
 plt.xlabel('Person i')
 plt.ylabel(r'$\theta_i$, [ms]')
 plt.savefig('Box.png',dpi = 300)
+
+plt.figure(5)
+plt.clf()
+p5 = sns.distplot(tau_samp,bins = 41)
+l_new,u_new = calculate_hdi(tau_samp)
+plt.hlines(0.3,l_new,u_new,linewidth=2,color = 'r')
+mode_x_new,mode_y_new = calculate_mode(p5)
+plt.vlines(mode_x_new,0,mode_y_new)
+
+#Set axis and save file
+plt.title('Assignment 5')
+plt.xlabel(r'$\tau$')
+plt.ylabel('pdf')
+plt.legend(['HDI','Mode','Posterior'])
+plt.savefig('Tau.png',dpi = 300)
+

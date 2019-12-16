@@ -6,7 +6,7 @@ Created on Sun Oct 27 12:40:27 2019
 """
 import numpy as np
 def calculate_hdi(samples,percent=0.95):
-    sorted_samples = np.sort(samples)   #Sort samples
+    sorted_samples = np.sort(samples,axis=0)   #Sort samples
     N = samples.size                    #Get size
     ll = int(np.ceil(N*percent))        #Calculate the interval that consist the desired samples
     
