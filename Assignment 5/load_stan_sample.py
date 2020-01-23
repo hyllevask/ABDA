@@ -129,3 +129,41 @@ plt.ylabel('pdf')
 plt.legend(['HDI','Mode','Posterior'])
 plt.savefig('Tau.png',dpi = 300)
 
+
+
+
+
+
+
+
+def Gaussian(mu,sigma,x):
+    return 1/sigma/np.sqrt(2*np.pi) * np.exp(-(x-mu)**2 / (2*sigma**2))
+
+
+
+#       Generatet the group 
+data = np.linspace(5,7,100)
+prior_adults = Gaussian(np.mean(mu_samp),np.mean(tau_samp),data)
+plt.figure(99)
+plt.clf()
+plt.plot(data,prior_adults)
+plt.xlabel(r'$\theta$')
+plt.title(r'Assignment 5 Prior')
+plt.ylabel('pdf')
+plt.savefig('Priors.png',dpi = 300)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -44,6 +44,26 @@ plt.savefig('Phi.png',dpi = 300)
 
 
 
+plt.figure(12)
+plt.clf()
+p = sns.distplot(np.exp(phi_samp))
+l_phi,u_phi = calculate_hdi(np.exp(phi_samp))
+phi_mode_x,phi_mode_y = calculate_mode(p)
+plt.vlines(phi_mode_x,0,phi_mode_y)  
+plt.hlines(0.4,l_phi,u_phi,linewidth=2,color = 'r')  
+
+
+#       Set thet labels and save fig
+plt.title(r'Difference between adults and children')
+plt.xlabel(r'$\exp(\phi)$')
+plt.ylabel('pdf')
+plt.legend(['HDI','Mode','Posterior'])
+plt.savefig('Expected_time.png',dpi = 300)
+
+
+
+
+
 
 #       PLot the tau parameter
 plt.figure(2)
@@ -57,7 +77,7 @@ plt.vlines(tau_mode_x,0,tau_mode_y)
 plt.hlines(0.4,l_tau,u_tau,linewidth=2,color = 'r')  
 
 plt.title(r'Assignment 6')
-plt.xlabel(r'$\phi$')
+plt.xlabel(r'$\tau$')
 plt.ylabel('pdf')
 plt.legend(['HDI','Mode','Posterior'])
 plt.savefig('tau_a6.png',dpi = 300)
